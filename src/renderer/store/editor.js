@@ -652,6 +652,14 @@ const actions = {
     })
   },
 
+  LISTEN_FOR_ALL_CLOSE_TAB ({ commit, state, dispatch }) {
+    ipcRenderer.on('AGANI::close-all-tab', e => {
+      const file = state.currentFile
+      if (!hasKeys(file)) return
+      dispatch('CLOSE_TAB', file)
+    })
+  },
+
   LISTEN_FOR_TAB_CYCLE ({ commit, state, dispatch }) {
     ipcRenderer.on('mt::tabs-cycle-left', e => {
       dispatch('CYCLE_TABS', false)

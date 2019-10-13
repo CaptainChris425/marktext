@@ -1,4 +1,4 @@
-import * as actions from '../actions/file'
+import * as actions from '../actions/tab'
 import { showTabBar } from '../actions/view'
 
 export default function (keybindings) {
@@ -7,13 +7,19 @@ export default function (keybindings) {
     label: '&Tab',
     submenu: [{
       label: 'New Tab',
-      accelerator: keybindings.getAccelerator('fileNewTab'),
+      accelerator: keybindings.getAccelerator('tabNewTab'),
       click (menuItem, browserWindow) {
         actions.newBlankTab(browserWindow)
         showTabBar(browserWindow)
       }
-    },{
+    }, {
       type: 'separator'
+    }, {
+      label: 'Close Tab',
+      accelerator: keybindings.getAccelerator('tabCloseTab'),
+      click (menuItem, browserWindow) {
+        actions.closeTab(browserWindow)
+      }
     }]
   }
 }

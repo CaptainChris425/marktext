@@ -1,1 +1,1 @@
-/usr/local/bin/yarn --offline run build
+/usr/local/bin/yarn run build

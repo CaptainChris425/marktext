@@ -1,0 +1,140 @@
+What: Events like new tabs and new windows
+Where: renderer/store/editor.js
+How: 
+1. win.webContents.send('mt::new-untitled-tab')		main/menu/actions/file.js
+2. win.webContents.send('AGANI::close-tab')		
+
+
+What: Menu items like file , edit, and where to add tab
+Where: 	main/menu/templates/tab.js
+	main/menu/actions/tab.js
+How:
+New menu option:
+export default function (keybindings) {
+  return {
+    id: 'paragraphMenuEntry',
+    label: '&Tab',
+    submenu: [{ MENU ITEMS HERE }]
+
+Menu button actions:
+export const newBlankTab = win => {
+    win.webContents.send('mt::new-untitled-tab')
+  }
+
+What: Accelerator, The text to the right of menu commands 
+Where: main/keyboard/shortcutHandler.js
+How: 
+['tabNewTab', 'CmdOrCtrl+T']
+IN: main/menu/templates/tab.js
+    submenu: [{
+      label: 'New Tab',
+      accelerator: keybindings.getAccelerator('tabNewTab')
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+
+What:
+Where:
+How:
+
+
+What:
+Where:
+How:
+

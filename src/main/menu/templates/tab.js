@@ -20,6 +20,11 @@ export default function (keybindings) {
       click (menuItem, browserWindow) {
         actions.closeTab(browserWindow)
       }
+    }, {
+      label: 'Close All Tabs',
+      click (menuItem, browserWindow) {
+        actions.closeAllTab(browserWindow)
+      }
     }]
   }
 }

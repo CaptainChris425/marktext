@@ -105,6 +105,7 @@ class Keybindings {
 
       // Tab
       ['tabNewTab', 'CmdOrCtrl+T'],
+      ['tabCloseTab', 'CmdOrCtrl+W'],
 
       // Misc
       ['tabsCycleForward', 'CmdOrCtrl+Tab'],

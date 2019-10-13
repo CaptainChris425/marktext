@@ -34,5 +34,5 @@ export const closeTab = win => {
 }
 
 export const closeAllTab = win => {
-  win.webContents.send('AGANI::close-tab')
+  win.webContents.send('AGANI::close-all-tab')
 }

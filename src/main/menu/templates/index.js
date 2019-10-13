@@ -8,6 +8,7 @@ import window from './window'
 import paragraph from './paragraph'
 import format from './format'
 import theme from './theme'
+import tab from './tab'
 
 export dockMenu from './dock'
 
@@ -41,6 +42,7 @@ export default function (keybindings, preferences, recentlyUsedFiles) {
     window(keybindings),
     theme(preferences),
     view(keybindings),
+    tab(keybindings),
     help()
   ]
 }

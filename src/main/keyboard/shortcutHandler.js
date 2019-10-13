@@ -103,6 +103,9 @@ class Keybindings {
       ['viewDevToggleDeveloperTools', 'CmdOrCtrl+Alt+I'],
       ['viewDevReload', 'CmdOrCtrl+R'],
 
+      // Tab
+      ['tabNewTab', 'CmdOrCtrl+T'],
+
       // Misc
       ['tabsCycleForward', 'CmdOrCtrl+Tab'],
       ['tabsCycleBackward', 'CmdOrCtrl+Shift+Tab'],

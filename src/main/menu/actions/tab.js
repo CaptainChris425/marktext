@@ -30,9 +30,11 @@ export const newBlankTab = win => {
 }
 
 export const closeTab = win => {
+  console.log('tab close tab')
   win.webContents.send('AGANI::close-tab')
 }
 
 export const closeAllTab = win => {
+  console.log('tab close tab')
   win.webContents.send('AGANI::close-all-tab')
 }

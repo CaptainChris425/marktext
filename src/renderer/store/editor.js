@@ -654,7 +654,7 @@ const actions = {
 
   LISTEN_FOR_ALL_CLOSE_TAB ({ commit, state, dispatch }) {
     ipcRenderer.on('AGANI::close-all-tab', e => {
-      console.log("Here at close all tabs")
+      console.log('Here at close all tabs')
       const file = state.currentFile
       // const tabs = state.tabs
       if (!hasKeys(file)) return

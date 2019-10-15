@@ -646,7 +646,6 @@ const actions = {
 
   LISTEN_FOR_CLOSE_TAB ({ commit, state, dispatch }) {
     ipcRenderer.on('AGANI::close-tab', e => {
-      console.log('Here at close tabs')
       const file = state.currentFile
       if (!hasKeys(file)) return
       dispatch('CLOSE_TAB', file)
@@ -655,11 +654,10 @@ const actions = {
 
   LISTEN_FOR_ALL_CLOSE_TAB ({ commit, state, dispatch }) {
     ipcRenderer.on('AGANI::close-all-tab', e => {
-      console.log('Here at close all tabs')
       const file = state.currentFile
       // const tabs = state.tabs
       if (!hasKeys(file)) return
-      dispatch('CLOSE_TAB', file)
+      dispatch('CLOSE_ALL_TAB', file)
     })
   },
 
@@ -673,6 +671,17 @@ const actions = {
   },
 
   CLOSE_TAB ({ dispatch }, file) {
+    console.log('Close_Tab')
+    const { isSaved } = file
+    if (isSaved) {
+      dispatch('FORCE_CLOSE_TAB', file)
+    } else {
+      dispatch('CLOSE_UNSAVED_TAB', file)
+    }
+  },
+
+  CLOSE_ALL_TAB ({ dispatch }, file) {
+    console.log('Close_All_Tab')
     const { isSaved } = file
     if (isSaved) {
       dispatch('FORCE_CLOSE_TAB', file)

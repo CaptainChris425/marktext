@@ -26,8 +26,6 @@ export default function (keybindings) {
         actions.closeAllTab(browserWindow)
       }
     }]
-    }
-    return fileMenu
+  }
+  return fileMenu
 }
-
-

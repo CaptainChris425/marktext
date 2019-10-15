@@ -2,7 +2,7 @@ import * as actions from '../actions/tab'
 import { showTabBar } from '../actions/view'
 
 export default function (keybindings) {
-  return {
+  const fileMenu = {
     id: 'paragraphMenuEntry',
     label: '&Tab',
     submenu: [{
@@ -26,5 +26,8 @@ export default function (keybindings) {
         actions.closeAllTab(browserWindow)
       }
     }]
-  }
+    }
+    return fileMenu
 }
+
+

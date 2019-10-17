@@ -501,6 +501,7 @@ const actions = {
 
   ASK_FOR_SAVE_ALL ({ commit, state }, closeTabs) {
     const { tabs } = state
+    console.log(toString(tabs))
     const unsavedFiles = tabs
       .filter(file => !(file.isSaved && /[^\n]/.test(file.markdown)))
       .map(file => {
@@ -548,6 +549,17 @@ const actions = {
     ipcRenderer.on('AGANI::ask-file-rename', () => {
       dispatch('RESPONSE_FOR_RENAME')
     })
+  },
+
+  LISTEN_FOR_OPEN_IN_FILE ({ commit, state, dispatch }) {
+    ipcRenderer.on('AGANI::open-in-file', () => {
+      dispatch('OPEN_FILE_IN_EXPLORER')
+    })
+  },
+
+  OPEN_FILE_IN_EXPLORER ({ state, rootState }) {
+    const { pathname } = state.currentFile
+    shell.showItemInFolder(pathname)
   },
 
   RESPONSE_FOR_RENAME ({ state, rootState }) {
@@ -650,16 +662,26 @@ const actions = {
       if (!hasKeys(file)) return
       dispatch('CLOSE_TAB', file)
     })
+    ipcRenderer.on('AGANI::close-all-tab', e => {
+      const { tabs } = state
+      // const tabs = state.tabs
+      // if (!hasKeys(file)) return
+      // dispatch('CLOSE_ALL_TAB', tabs)
+      dispatch('ASK_FOR_SAVE_ALL', tabs)
+    })
   },
 
+  /*
   LISTEN_FOR_ALL_CLOSE_TAB ({ commit, state, dispatch }) {
-    ipcRenderer.on('AGANI::close-all-tab', e => {
+    ipcRenderer.on('mt::close-all-tab', e => {
+      console.log('AGANI::close-all-tab')
       const file = state.currentFile
       // const tabs = state.tabs
       if (!hasKeys(file)) return
       dispatch('CLOSE_ALL_TAB', file)
     })
   },
+  */
 
   LISTEN_FOR_TAB_CYCLE ({ commit, state, dispatch }) {
     ipcRenderer.on('mt::tabs-cycle-left', e => {
@@ -671,7 +693,6 @@ const actions = {
   },
 
   CLOSE_TAB ({ dispatch }, file) {
-    console.log('Close_Tab')
     const { isSaved } = file
     if (isSaved) {
       dispatch('FORCE_CLOSE_TAB', file)
@@ -681,13 +702,7 @@ const actions = {
   },
 
   CLOSE_ALL_TAB ({ dispatch }, file) {
-    console.log('Close_All_Tab')
-    const { isSaved } = file
-    if (isSaved) {
-      dispatch('FORCE_CLOSE_TAB', file)
-    } else {
-      dispatch('CLOSE_UNSAVED_TAB', file)
-    }
+    dispatch('ASK_FOR_SAVE_ALL', file)
   },
 
   // Direction is a boolean where false is left and true right.

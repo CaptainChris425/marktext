@@ -25,6 +25,8 @@ import pandoc from '../../utils/pandoc'
     Show in folder
 */
 
+// import { shell } from 'electron'
+
 export const newBlankTab = win => {
   win.webContents.send('mt::new-untitled-tab')
 }
@@ -35,6 +37,21 @@ export const closeTab = win => {
 }
 
 export const closeAllTab = win => {
-  console.log('tab close all tab')
   win.webContents.send('AGANI::close-all-tab')
+}
+
+export const closeSavedTab = win => {
+  // win.webContents.send('AGANI::close-all-tab')
+}
+
+export const showTabInFolder = win => {
+  win.webContents.send('AGANI::open-in-file')
+}
+
+export const copyTabPath = win => {
+  // win.webContents.send('AGANI::close-all-tab')
+}
+
+export const renameTab = win => {
+  win.webContents.send('AGANI::ask-file-rename')
 }

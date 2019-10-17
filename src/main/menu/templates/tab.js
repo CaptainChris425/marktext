@@ -20,12 +20,36 @@ export default function (keybindings) {
       click (menuItem, browserWindow) {
         actions.closeTab(browserWindow)
       }
-    }, {
-      label: 'Close All Tabs',
-      click (menuItem, browserWindow) {
-        actions.closeAllTab(browserWindow)
-      }
     }]
   }
+
+  fileMenu.submenu.push({
+    label: 'Close Saved Tabs',
+    click (menuItem, browserWindow) {
+      actions.closeSavedTab(browserWindow)
+    }
+  }, {
+    label: 'Close All Tabs',
+    click (menuItem, browserWindow) {
+      actions.closeAllTab(browserWindow)
+    }
+  }, {
+    type: 'separator'
+  }, {
+    label: 'Rename Tab',
+    click (menuItem, browserWindow) {
+      actions.renameTab(browserWindow)
+    }
+  }, {
+    label: 'Copy Tab Path',
+    click (menuItem, browserWindow) {
+      actions.showTabInFolder(browserWindow)
+    }
+  }, {
+    label: 'Show Tab in Folder',
+    click (menuItem, browserWindow) {
+      actions.showTabInFolder(browserWindow)
+    }
+  })
   return fileMenu
 }

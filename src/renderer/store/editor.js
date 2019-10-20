@@ -558,8 +558,9 @@ const actions = {
   },
 
   OPEN_FILE_IN_EXPLORER ({ state, rootState }) {
-    const { pathname } = state.currentFile
-    shell.showItemInFolder(pathname)
+    // const { pathname } = state.currentFile
+
+    shell.showItemInFolder('C:\\Users\\kicky\\Documents\\marktext\\make')
   },
 
   RESPONSE_FOR_RENAME ({ state, rootState }) {
@@ -662,26 +663,14 @@ const actions = {
       if (!hasKeys(file)) return
       dispatch('CLOSE_TAB', file)
     })
-    ipcRenderer.on('AGANI::close-all-tab', e => {
-      const { tabs } = state
-      // const tabs = state.tabs
-      // if (!hasKeys(file)) return
-      // dispatch('CLOSE_ALL_TAB', tabs)
-      dispatch('ASK_FOR_SAVE_ALL', tabs)
-    })
   },
 
-  /*
   LISTEN_FOR_ALL_CLOSE_TAB ({ commit, state, dispatch }) {
-    ipcRenderer.on('mt::close-all-tab', e => {
-      console.log('AGANI::close-all-tab')
-      const file = state.currentFile
-      // const tabs = state.tabs
-      if (!hasKeys(file)) return
-      dispatch('CLOSE_ALL_TAB', file)
+    ipcRenderer.on('AGANI::close-all-tab', e => {
+      const { tabs } = state
+      dispatch('CLOSE_ALL_TAB', tabs)
     })
   },
-  */
 
   LISTEN_FOR_TAB_CYCLE ({ commit, state, dispatch }) {
     ipcRenderer.on('mt::tabs-cycle-left', e => {
@@ -734,6 +723,17 @@ const actions = {
     }
     commit('SET_CURRENT_FILE', nextTab)
     dispatch('UPDATE_LINE_ENDING_MENU')
+  },
+
+  LISTEN_FOR_COPY_TAB_PATH ({ commit, state, dispatch }) {
+    ipcRenderer.on('AGANI::copy-tab-path', e => {
+      dispatch('COPY_TAB_PATH_TO_CLIPBOARD')
+    })
+  },
+
+  COPY_TAB_PATH_TO_CLIPBOARD ({ state }) {
+    const file = state.currentFile
+    clipboard.writeText(file.path)
   },
 
   /**

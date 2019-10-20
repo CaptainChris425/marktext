@@ -49,7 +49,8 @@ export const showTabInFolder = win => {
 }
 
 export const copyTabPath = win => {
-  // win.webContents.send('AGANI::close-all-tab')
+  // console.log(document.getElementById(win.console))
+  win.webContents.send('AGANI::copy-tab-path')
 }
 
 export const renameTab = win => {

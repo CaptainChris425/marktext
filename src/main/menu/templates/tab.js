@@ -43,7 +43,7 @@ export default function (keybindings) {
   }, {
     label: 'Copy Tab Path',
     click (menuItem, browserWindow) {
-      actions.showTabInFolder(browserWindow)
+      actions.copyTabPath(browserWindow)
     }
   }, {
     label: 'Show Tab in Folder',

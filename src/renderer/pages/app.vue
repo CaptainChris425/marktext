@@ -141,10 +141,13 @@ export default {
     dispatch('LINTEN_FOR_SET_LINE_ENDING')
     dispatch('LISTEN_FOR_NEW_TAB')
     dispatch('LISTEN_FOR_CLOSE_TAB')
+    dispatch('LISTEN_FOR_ALL_CLOSE_TAB')
+    dispatch('LISTEN_FOR_COPY_TAB_PATH')
     dispatch('LISTEN_FOR_TAB_CYCLE')
     dispatch('LINTEN_FOR_PRINT_SERVICE_CLEARUP')
     dispatch('LINTEN_FOR_EXPORT_SUCCESS')
     dispatch('LISTEN_FOR_FILE_CHANGE')
+    dispatch('LISTEN_FOR_OPEN_IN_FILE')
     // module: notification
     dispatch('LISTEN_FOR_NOTIFICATION')
 

@@ -559,8 +559,12 @@ const actions = {
 
   OPEN_FILE_IN_EXPLORER ({ state, rootState }) {
     // const { pathname } = state.currentFile
-
-    shell.showItemInFolder('C:\\Users\\kicky\\Documents\\marktext\\make')
+    const { id, pathname } = state.currentFile
+    if (!id) return
+    if (pathname) {
+      shell.showItemInFolder(pathname)
+    }
+    // shell.showItemInFolder('C:\\Users\\kicky\\Documents\\marktext\\make')
   },
 
   RESPONSE_FOR_RENAME ({ state, rootState }) {
@@ -732,8 +736,11 @@ const actions = {
   },
 
   COPY_TAB_PATH_TO_CLIPBOARD ({ state }) {
-    const file = state.currentFile
-    clipboard.writeText(file.path)
+    const { id, pathname } = state.currentFile
+    if (!id) return
+    if (pathname) {
+      clipboard.writeText(pathname)
+    }
   },
 
   /**

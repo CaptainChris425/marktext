@@ -9,6 +9,8 @@ class MouseEvent {
   mouseBinding () {
     const { container, eventCenter } = this.muya
     const handler = event => {
+      const { hideLinkPopup } = this.muya.options
+      if (hideLinkPopup) return
       const target = event.target
       const parent = target.parentNode
       if (parent && parent.tagName === 'A' && parent.classList.contains('ag-inline-rule')) {
@@ -18,8 +20,6 @@ class MouseEvent {
             return rect
           }
         }
-        console.log('here we are 1')
-
         eventCenter.dispatch('muya-link-tools', {
           reference,
           linkInfo: getLinkInfo(parent)
@@ -31,7 +31,6 @@ class MouseEvent {
       const parent = target.parentNode
 
       if (parent && parent.tagName === 'A' && parent.classList.contains('ag-inline-rule')) {
-        console.log('here we are 2')
         eventCenter.dispatch('muya-link-tools', {
           reference: null
         })

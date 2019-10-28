@@ -61,7 +61,7 @@
       :onChange="value => onSelectChange('autoPairQuote', value)"
     ></bool>
     <bool
-      description="Hides link popup"
+      description="Hide link popup"
       :bool="hideLinkPopup"
       :onChange="value => onSelectChange('hideLinkPopup', value)"
     ></bool>

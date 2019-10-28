@@ -23,6 +23,7 @@ const state = {
   editorLineWidth: '',
 
   autoPairBracket: true,
+  hideLinkPopup: false,
   autoPairMarkdownSyntax: true,
   autoPairQuote: true,
   endOfLine: 'default',

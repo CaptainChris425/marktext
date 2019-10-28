@@ -60,6 +60,11 @@
       :bool="autoPairQuote"
       :onChange="value => onSelectChange('autoPairQuote', value)"
     ></bool>
+    <bool
+      description="Hides link popup"
+      :bool="hideLinkPopup"
+      :onChange="value => onSelectChange('hideLinkPopup', value)"
+    ></bool>
     <separator></separator>
     <cur-select
       description="The default end of line character. If you select default, the ending will be selected according to your system intelligence."
@@ -139,6 +144,7 @@ export default {
       autoPairBracket: state => state.preferences.autoPairBracket,
       autoPairMarkdownSyntax: state => state.preferences.autoPairMarkdownSyntax,
       autoPairQuote: state => state.preferences.autoPairQuote,
+      hideLinkPopup: state => state.preferences.hideLinkPopup,
       endOfLine: state => state.preferences.endOfLine,
       textDirection: state => state.preferences.textDirection,
       codeFontSize: state => state.preferences.codeFontSize,

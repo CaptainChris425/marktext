@@ -501,7 +501,6 @@ const actions = {
 
   ASK_FOR_SAVE_ALL ({ commit, state }, closeTabs) {
     const { tabs } = state
-    console.log(toString(tabs))
     const unsavedFiles = tabs
       .filter(file => !(file.isSaved && /[^\n]/.test(file.markdown)))
       .map(file => {

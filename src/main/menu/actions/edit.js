@@ -25,7 +25,7 @@ export const edit = (win, type) => {
   win.webContents.send('AGANI::edit', { type })
 }
 
-export const screenshot = (win, type) => {
+export const screenshot = (win) => {
   ipcMain.emit('screen-capture', win)
 }
 

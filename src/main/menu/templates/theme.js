@@ -10,7 +10,7 @@ export default function (userPreference) {
       type: 'radio',
       id: 'light',
       checked: theme === 'light',
-      click () {
+      click (menuItem, browserWindow) {
         actions.selectTheme('light')
       }
     }, {
@@ -18,7 +18,7 @@ export default function (userPreference) {
       type: 'radio',
       id: 'dark',
       checked: theme === 'dark',
-      click () {
+      click (menuItem, browserWindow) {
         actions.selectTheme('dark')
       }
     }, {
@@ -26,7 +26,7 @@ export default function (userPreference) {
       type: 'radio',
       id: 'graphite',
       checked: theme === 'graphite',
-      click () {
+      click (menuItem, browserWindow) {
         actions.selectTheme('graphite')
       }
     }, {
@@ -34,7 +34,7 @@ export default function (userPreference) {
       type: 'radio',
       id: 'material-dark',
       checked: theme === 'material-dark',
-      click () {
+      click (menuItem, browserWindow) {
         actions.selectTheme('material-dark')
       }
     }, {
@@ -42,7 +42,7 @@ export default function (userPreference) {
       type: 'radio',
       id: 'one-dark',
       checked: theme === 'one-dark',
-      click () {
+      click (menuItem, browserWindow) {
         actions.selectTheme('one-dark')
       }
     }, {
@@ -50,7 +50,7 @@ export default function (userPreference) {
       type: 'radio',
       id: 'ulysses',
       checked: theme === 'ulysses',
-      click () {
+      click (menuItem, browserWindow) {
         actions.selectTheme('ulysses')
       }
     }]

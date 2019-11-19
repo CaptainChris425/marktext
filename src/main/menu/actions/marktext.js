@@ -47,7 +47,7 @@ autoUpdater.on('update-downloaded', () => {
   setImmediate(() => autoUpdater.quitAndInstall())
 })
 
-export const userSetting = () => {
+export const userSetting = (menuItem, browserWindow) => {
   ipcMain.emit('app-create-settings-window')
 }
 

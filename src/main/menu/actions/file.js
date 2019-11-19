@@ -139,7 +139,7 @@ const showUnsavedFilesMessage = async (win, files) => {
     case 2:
       return { needSave: false }
     case 0:
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve({ needSave: true })
         })
@@ -481,7 +481,7 @@ export const saveAs = win => {
   win.webContents.send('AGANI::ask-file-save-as')
 }
 
-export const autoSave = (menuItem) => {
+export const autoSave = (menuItem, browserWindow) => {
   const { checked } = menuItem
   ipcMain.emit('set-user-preference', { autoSave: checked })
 }

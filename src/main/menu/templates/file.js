@@ -11,14 +11,14 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
     submenu: [{
       label: 'New Tab',
       accelerator: keybindings.getAccelerator('fileNewTab'),
-      click (browserWindow) {
+      click (menuItem, browserWindow) {
         actions.newBlankTab(browserWindow)
         showTabBar(browserWindow)
       }
     }, {
       label: 'New Window',
       accelerator: keybindings.getAccelerator('fileNewFile'),
-      click () {
+      click (menuItem, browserWindow) {
         actions.newEditorWindow()
       }
     }, {
@@ -26,13 +26,13 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
     }, {
       label: 'Open File',
       accelerator: keybindings.getAccelerator('fileOpenFile'),
-      click (browserWindow) {
+      click (menuItem, browserWindow) {
         actions.openFile(browserWindow)
       }
     }, {
       label: 'Open Folder',
       accelerator: keybindings.getAccelerator('fileOpenFolder'),
-      click (browserWindow) {
+      click (menuItem, browserWindow) {
         actions.openFolder(browserWindow)
       }
     }]
@@ -59,7 +59,7 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
     }, {
       label: 'Clear Recently Used',
       enabled: recentlyUsedFiles.length > 0,
-      click () {
+      click (menuItem, browserWindow) {
         actions.clearRecentlyUsed()
       }
     })
@@ -82,13 +82,13 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
   }, {
     label: 'Save',
     accelerator: keybindings.getAccelerator('fileSave'),
-    click (browserWindow) {
+    click (menuItem, browserWindow) {
       actions.save(browserWindow)
     }
   }, {
     label: 'Save As...',
     accelerator: keybindings.getAccelerator('fileSaveAs'),
-    click (browserWindow) {
+    click (menuItem, browserWindow) {
       actions.saveAs(browserWindow)
     }
   }, {
@@ -103,19 +103,19 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
     type: 'separator'
   }, {
     label: 'Move To...',
-    click (browserWindow) {
+    click (menuItem, browserWindow) {
       actions.moveTo(browserWindow)
     }
   }, {
     label: 'Rename...',
-    click (browserWindow) {
+    click (menuItem, browserWindow) {
       actions.rename(browserWindow)
     }
   }, {
     type: 'separator'
   }, {
     label: 'Import...',
-    click (browserWindow) {
+    click (menuItem, browserWindow) {
       actions.importFile(browserWindow)
     }
   }, {
@@ -123,12 +123,12 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
     submenu: [
       {
         label: 'HTML',
-        click (browserWindow) {
+        click (menuItem, browserWindow) {
           actions.exportFile(browserWindow, 'styledHtml')
         }
       }, {
         label: 'PDF',
-        click (browserWindow) {
+        click (menuItem, browserWindow) {
           actions.exportFile(browserWindow, 'pdf')
         }
       }
@@ -136,7 +136,7 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
   }, {
     label: 'Print',
     accelerator: keybindings.getAccelerator('filePrint'),
-    click (browserWindow) {
+    click (menuItem, browserWindow) {
       actions.print(browserWindow)
     }
   }, {
@@ -154,7 +154,7 @@ export default function (keybindings, userPreference, recentlyUsedFiles) {
   }, {
     label: 'Close Tab',
     accelerator: keybindings.getAccelerator('fileCloseTab'),
-    click (browserWindow) {
+    click (menuItem, browserWindow) {
       actions.closeTab(browserWindow)
     }
   }, {
